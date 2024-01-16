@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resat-Timer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="border border-1 border-secondary rounded">
+            <div class="border border-1 border-secondary mt-5 mb-4 ms-5 me-5 p-5 fw-medium timer-container">
+                <div class="row">
+                    <div id="hour" class="col-3 mt-3 time-input" contenteditable placeholder='00'></div>
+                    <div class="col">:</div>
+                    <div id="minute" class="col-3 mt-3 time-input" contenteditable placeholder='00'></div>
+                    <div class="col">:</div>
+                    <div id="second" class="col-3 mt-3 time-input" contenteditable placeholder='00'></div>
+                </div>
+            </div>
+            <div class="row">
+                <button id="start" class="col border-secondary mt-1 mb-5 ms-5 me-5 btn btn-light" onclick="start()">START</button>
+                <button id="stop" class="col border-secondary mt-1 mb-5 ms-5 me-5 btn btn-light" onclick="stop()">STOP</button>
+                <button id="reset" class="col border-secondary mt-1 mb-5 ms-5 me-5 btn btn-light" onclick="reset()">RESET</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+/* style.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.border {
+    border: 2px solid #6c757d;
+}
+
+.rounded {
+    border-radius: 8px;
+}
+
+.timer-container {
+    font-size: 4rem;
+    margin: 1rem;
+}
+
+.time-input {
+    font-size: 2.8rem;
+}
+
+.btn {
+    font-size: 1.7rem;
+}
+
+// script.js
+
+var isStop = false; //타이머 동작 여부 
+var intervalId; // 타이머 갱신을 위한 setInterval 함수의 ID
+
+// 시간을 두 자리수 형식으로 변환
+function formatTime(value) {
+    return value < 10 ? '0' + value : value;
+}
+//타이머 시작 함수
+function start() {
+    isStop = false;//초기화
+    console.log("start");
+  
+  //HTML에서 시,분,초 값을 가져와 정수로 변환
+    let hour = parseInt(document.getElementById("hour").textContent) || 0;
+    let minute = parseInt(document.getElementById("minute").textContent) || 0;
+    let second = parseInt(document.getElementById("second").textContent) || 0;
+//현재 시간을 기준으로 사용자가 설정한 시간으로 설정
+    let date = new Date();
+    date.setHours(hour);
+    date.setMinutes(minute);
+    date.setSeconds(second);
+//사용자가 시간을 설정하지 않았을 때는 카운트 업, 초기화면에서 바로 start버튼 눌렀을 때;
+    if (hour === 0 && minute === 0 && second === 0) {
+
+        intervalId = setInterval(function () {
+          //정지 상태인 경우 clearInterval을 호출하고 함수 종료
+            if (isStop) {
+                clearInterval(intervalId);
+                return;
+            }
+          //1초씩 증가하면서 시간 갱신
+            date.setSeconds(date.getSeconds() + 1);
+          
+          //갱신된 시간을 HTML에 반영
+            console.log(date);
+            document.getElementById("hour").textContent = formatTime(date.getHours());
+            document.getElementById("minute").textContent = formatTime(date.getMinutes());
+            document.getElementById("second").textContent = formatTime(date.getSeconds());
+        }, 1000);
+    } else {
+        // 사용자가 설정한 값에서는 카운트 다운
+        intervalId = setInterval(function () {
+            if (isStop) {
+                clearInterval(intervalId);
+                return;
+            }
+          
+            date.setSeconds(date.getSeconds() - 1); //1초씩 감소하면서 시간 갱신
+
+            if (date.getTime() <= 0) { //타이머가 종료되면 clearInterval 호출하고 알림창 표시 및 초기화
+                clearInterval(intervalId);
+                alert("타이머가 종료되었습니다.");
+                reset();
+            }
+
+            console.log(date); //갱신된 시간을 HTML에 반영
+            document.getElementById("hour").textContent = formatTime(date.getHours());
+            document.getElementById("minute").textContent = formatTime(date.getMinutes());
+            document.getElementById("second").textContent = formatTime(date.getSeconds());
+        }, 1000);
+    }
+}
+//타이머 정지 함수
+function stop() {
+    console.log("stop");
+    isStop = true;
+}
+//타이머 초기화 함수
+function reset() {
+    stop();//정지 함수 호출
+  //HTML에 00:00:00으로 설정
+    document.getElementById("hour").textContent = '00';
+    document.getElementById("minute").textContent = '00';
+    document.getElementById("second").textContent = '00';
+}

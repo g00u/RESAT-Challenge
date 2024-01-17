@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+    <link rel="stylesheet" href="style_3.css">
+</head>
+<body>
+    <div class="todo-container">
+        <div id="header">
+            <h2>To-Do LIST</h2>
+            <div id="filter-buttons">
+                <button onclick="showAll()">전체</button>
+                <button onclick="showCompleted()">완료</button>
+                <button onclick="showUncompleted()">미완료</button>
+            </div>
+        </div>
+
+        <div id="input-section">
+           <div class="input-box">
+                <input type="text" id="taskInput" placeholder="할 일을 입력하세요">
+                <select id="prioritySelect">
+                    <option value="낮음">낮음</option>
+                    <option value="보통">보통</option>
+                    <option value="높음">높음</option>
+                    <option value="아주 높음">아주 높음</option>
+                </select>
+                <input type="date" id="dueDateInput">
+                <button onclick="addTask()">추가</button>
+            </div>
+            <hr>
+        </div>
+        <div id="todoListContainer">
+        <div id="todoList"></div>
+    </div>
+    </div>
+<script src="script3.js"></script>
+    
+</body>
+</html>

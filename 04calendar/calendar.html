@@ -1,0 +1,30 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calendar</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <div id="calendar">
+        <header>
+            <button id="prevMonth">&lt;</button>
+            <span id="currentMonth"></span>
+            <button id="nextMonth">&gt;</button>
+        </header>
+        <div id="nameDays"></div>
+        <div id="days"></div>
+    </div>
+    <div id="memoContainer">
+        <div id="memoInputContainer">
+            <textarea id="memoInput" placeholder="메모를 입력하세요"></textarea>
+             <button id="saveMemo">저장</button>
+        </div>
+        
+        <ul id="memoList"></ul>
+    </div>
+    <script src="scripts4.js"></script>
+</body>
+</html>

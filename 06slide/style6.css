@@ -1,0 +1,77 @@
+ #slider-container{
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 650px;
+    height: 800px;
+ }
+ 
+ #slides {
+    display: flex;
+    transition: transform 0.5s ease;
+    align-items: center;
+    height: 100%;
+    background-color: #ffffff; 
+    border-radius: 20px;
+    
+}
+  
+  
+  .slide {
+   flex: 0 0 600px;
+   height: 600px !important;
+   box-sizing: border-box;
+   background-color: #ffffff;
+   text-align: center;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 40px;
+   box-shadow: 2px 4px 4px 4px rgba(0, 0, 0, 0.1);
+   margin: 25px;
+   
+  }
+  
+  .slide img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-sizing: border-box;
+    padding:  80px;
+    
+  }
+  
+  #prev, #next {
+    position: absolute;
+    font-size: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(25, 23, 23, 0.233);
+    cursor: pointer;
+    padding: 10px;
+    
+  }
+  #prev:hover, #next:hover {
+    color: rgba(0,0,0,0.5);
+}
+  
+  #prev {
+    left: 10px;
+  }
+  
+  #next {
+    right: 10px;
+  }
+  
+/* 더미 요소를 추가하여 flex 정렬 시 여백이 발생하지 않도록 함 */
+#slides::before, #slides::after {
+    content: "";
+    flex: 0 0 0px;
+}
+
+/* 더미 요소의 높이를 .slide와 동일하게 설정하여 여백을 만듦 */
+#slides::before, #slides::after, .slide {
+    height: 600px;
+}
+

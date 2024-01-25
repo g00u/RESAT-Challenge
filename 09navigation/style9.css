@@ -1,0 +1,111 @@
+/* styles.css */
+
+/* 전체 페이지 스타일 */
+body {
+  font-family: Arial, sans-serif; /* 전체 페이지의 폰트 설정 */
+  margin: 0; /* body의 margin을 0으로 설정하여 기본 여백 제거 */
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+  display: flex; /* Flexbox를 사용하여 요소를 수평으로 정렬 */
+  justify-content: space-between; /* 요소들 사이의 여백을 최대한 활용하여 수평 정렬 */
+  align-items: center; /* 요소를 수직으로 중앙 정렬 */
+  background-color: #333; /* 배경색 설정 */
+  padding: 10px 20px; /* 안쪽 여백 설정 */
+  color: white; /* 텍스트 색상 설정 */
+}
+
+/* 로고 스타일 */
+.logo {
+  font-size: 1.5rem; /* 로고의 글자 크기 설정 */
+  font-weight: bold; /* 로고의 글자 굵기 설정 */
+}
+
+/* 일반 메뉴 스타일 */
+.menu {
+  display: flex; /* Flexbox를 사용하여 메뉴 항목을 수평으로 정렬 */
+}
+
+.menu a {
+  color: white; /* 링크 텍스트 색상 설정 */
+  text-decoration: none; /* 링크 밑줄 제거 */
+  margin-right: 20px; /* 메뉴 항목 간의 우측 여백 설정 */
+  transition: color 0.3s ease; /* 색상 변화에 부드러운 전환 효과 추가 */
+}
+.menu a:hover {
+  color: #ffcc00; /* 호버 시 텍스트 색상 변경 */
+}
+
+/* 햄버거 메뉴 아이콘 스타일 */
+.burger-menu {
+  display: none; /* 초기에는 햄버거 메뉴 아이콘을 감춤 */
+  flex-direction: column; /* 세로로 나열 */
+  cursor: pointer; /* 커서를 손가락 모양으로 변경하여 클릭 가능한 상태로 표시 */
+}
+
+.bar {
+  width: 25px; /* 바의 너비 설정 */
+  height: 3px; /* 바의 높이 설정 */
+  background-color: white; /* 바의 색상 설정 */
+  margin: 6px 0; /* 바 사이의 여백 설정 */
+}
+
+/* 사이드 바 메뉴 스타일 */
+.sidebar-menu {
+  display: none; /* 초기에는 사이드 바 메뉴를 감춤 */
+  flex-direction: column; /* 세로로 나열 */
+  position: absolute; /* 절대 위치 설정 */
+  top: 60px; /* 네비게이션 바 하단에서 60px 위에 표시 */
+  left: 0; /* 왼쪽에 정렬 */
+  background-color: #333; /* 배경색 설정 */
+  width: 100%; /* 너비를 화면 전체로 설정 */
+}
+
+/* 미디어 쿼리: 화면 폭이 768px 이하일 때 적용되는 스타일 */
+@media only screen and (max-width: 768px) {
+  .menu {
+    display: none; /* 화면 폭이 작아졌을 때 일반 메뉴를 감춤 */
+  }
+
+  .burger-menu {
+    display: flex; /* 화면 폭이 작아졌을 때 햄버거 메뉴 아이콘을 표시 */
+  }
+
+  
+
+  .sidebar-menu a {
+    padding: 15px 20px; /* 메뉴 항목의 안쪽 여백 설정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: white; /* 텍스트 색상 설정 */
+    transition: background-color 0.3s ease; /* 색상 변화에 부드러운 전환 효과 추가 */
+  }
+
+  .sidebar-menu a:hover {
+    background-color: #555; /* 호버 시 배경색 변경 */
+  }
+
+  .content {
+    padding: 30px; /* 컨텐츠 영역의 안쪽 여백 설정 */
+    background-color: #ffcc00; /* 컨텐츠 영역의 배경색 설정 */
+  }
+}
+/* 미디어 쿼리: 화면 폭이 768px 이상일 때 적용되는 스타일 */
+@media only screen and (min-width: 769px) {
+  .burger-menu {
+    display: none; /* 화면 폭이 다시 커졌을 때 햄버거 메뉴 아이콘을 감추기 */
+  }
+
+  .menu {
+    display: flex; /* 화면 폭이 다시 커졌을 때 일반 메뉴를 표시 */
+  }
+
+  .sidebar-menu {
+    display: none; /* 화면 폭이 다시 커졌을 때 사이드 바 메뉴를 감추기 */
+  }
+
+  .content {
+    display: block !important; /* 화면 폭이 다시 커졌을 때 컨텐츠를 보이게 설정 */
+  }
+}

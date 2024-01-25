@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style9.css">
+    <title>navigation</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">RESAT-Challenge</div>
+       <!--각 메뉴에 대한 링크, onclick속성을 통해 JavaScript 함수 호출-->
+        <div class="menu">
+            <a href="#" class="menu-link" onclick="showContent('home')">Home</a>
+            <a href="#" class="menu-link" onclick="showContent('about')">About</a>
+            <a href="#" class="menu-link" onclick="showContent('contact')">Contact</a>
+            <a href="#" class="menu-link" onclick="showContent('faq')">FAQ</a>
+        </div>
+        <!--햄버거 메뉴 아이콘-->
+        <div class="burger-menu" onclick="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <!--사이드 바 메뉴 영역-->
+        <div class="sidebar-menu">
+            <a href="#" class="menu-link" onclick="showContent('home')">Homdde</a>
+            <a href="#" class="menu-link" onclick="showContent('about')">About</a>
+            <a href="#" class="menu-link" onclick="showContent('contact')">Contact</a>
+            <a href="#" class="menu-link" onclick="showContent('faq')">FAQ</a>
+        </div>
+      </div>
+
+      <div class="content" id="main-content">
+        <!-- 메인 컨텐츠 영역, 초기로드 상태에서 표시할 내용 -->
+        <h2>화면크기를 줄이면 햄버거 아이콘이 나옵니다.</h2>
+      </div>
+      
+      <script src="scripts9.js"></script>
+</body>
+</html>

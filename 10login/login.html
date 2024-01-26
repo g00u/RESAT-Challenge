@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style10.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <!-- 아이디 입력창 -->
+          <label for="username">ID:</label>
+          <input type="text" id="username" name="username" required>
+    
+          <!-- 비밀번호 입력창 -->
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+    
+          <!-- 로그인 버튼 -->
+          <button type="button" onclick="validateLogin()">Login</button>
+        </form>
+    </div>
+
+    <script src="scripts10.js"></script>
+</body>
+</html>
